@@ -2,195 +2,230 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<title>QUẢN TRỊ TRA CỨU THÔNG TIN</title>
-<!-- ADMIN • GitHub Wrapper V2 -->
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>TRA CỨU THÔNG TIN</title>
+<!-- TRA CỨU THÔNG TIN • GitHub Wrapper Halloween Premium -->
 
-<meta name="theme-color" content="#061426">
+<meta name="theme-color" content="#080d18">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="QUẢN TRỊ TRA CỨU">
-<meta name="application-name" content="QUẢN TRỊ TRA CỨU THÔNG TIN">
+<meta name="apple-mobile-web-app-title" content="TRA CỨU THÔNG TIN">
 
 <link rel="preconnect" href="https://script.google.com" crossorigin>
 <link rel="preconnect" href="https://script.googleusercontent.com" crossorigin>
 <link rel="dns-prefetch" href="//script.google.com">
 <link rel="dns-prefetch" href="//script.googleusercontent.com">
-<link rel="manifest" href="manifest-admin.json">
-<link rel="icon" type="image/png" sizes="192x192" href="admin-icon-192.png">
-<link rel="apple-touch-icon" href="admin-icon-192.png">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
 
 <style>
 :root{
-  --bg:#031021;
-  --bg2:#071b34;
-  --panel:#071b31;
-  --cyan:#38dcff;
-  --blue:#2786ff;
-  --violet:#6d5cff;
-  --white:#eefaff;
-  --muted:#8fb5d1;
+  --bg:#070b13;
+  --bg2:#0d1522;
+  --panel:#111a28;
+  --orange:#ff8a1f;
+  --orange2:#ffc067;
+  --cream:#fff3dc;
+  --muted:#aab5c5;
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;width:100%;height:100%;overflow:hidden;font-family:Inter,Arial,Helvetica,sans-serif;background:var(--bg)}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--bg);font-family:Arial,Helvetica,sans-serif}
 body{position:fixed;inset:0}
 
-#adminFrame{
+#appFrame{
   position:fixed;inset:0;width:100%;height:100%;
-  border:0;display:block;background:#071522;
+  border:0;display:block;background:#fff;
   opacity:0;transform:scale(1.002);
-  transition:opacity .34s ease,transform .34s ease;
+  transition:opacity .35s ease,transform .35s ease;
 }
-body.app-ready #adminFrame{opacity:1;transform:scale(1)}
+body.app-ready #appFrame{opacity:1;transform:scale(1)}
 
 #loading{
   position:fixed;inset:0;z-index:20;overflow:hidden;
   display:flex;align-items:center;justify-content:center;
   background:
-    radial-gradient(circle at 50% 22%,rgba(44,215,255,.18),transparent 24%),
-    radial-gradient(circle at 18% 75%,rgba(88,82,255,.14),transparent 30%),
-    linear-gradient(155deg,#020b17 0%,#06162b 48%,#071a32 100%);
+    radial-gradient(circle at 50% 18%,rgba(255,138,31,.08),transparent 23%),
+    radial-gradient(circle at 20% 70%,rgba(112,54,154,.08),transparent 27%),
+    linear-gradient(180deg,#060a11 0%,#0b1320 52%,#101a28 100%);
   transition:opacity .18s ease,visibility .18s ease;
 }
 #loading.hide{opacity:0;visibility:hidden;pointer-events:none}
 
-.grid-bg{
-  position:absolute;inset:-20%;opacity:.11;transform:perspective(520px) rotateX(58deg) translateY(30%);
-  transform-origin:center bottom;
+.noise{
+  position:absolute;inset:0;opacity:.23;pointer-events:none;
   background-image:
-    linear-gradient(rgba(54,211,255,.55) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(54,211,255,.55) 1px,transparent 1px);
-  background-size:48px 48px;
-  mask-image:linear-gradient(to bottom,transparent 0%,#000 24%,#000 78%,transparent 100%);
+    radial-gradient(circle,rgba(255,255,255,.32) 0 1px,transparent 1.2px),
+    radial-gradient(circle,rgba(255,146,48,.24) 0 1px,transparent 1.2px);
+  background-size:92px 92px,137px 137px;
+  background-position:12px 18px,47px 63px;
 }
 
-.glow-orb{position:absolute;border-radius:50%;filter:blur(54px);opacity:.22;pointer-events:none}
-.o1{width:230px;height:230px;background:#00cfff;left:-85px;top:18%}
-.o2{width:280px;height:280px;background:#4f46ff;right:-120px;bottom:8%}
+.moon{
+  position:absolute;top:6vh;right:8vw;
+  width:clamp(68px,19vw,105px);aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle at 38% 34%,#fff7da 0 46%,#ffd88d 72%,#f6a83f 100%);
+  box-shadow:0 0 42px rgba(255,159,67,.22);
+}
+.moon:after{
+  content:"";position:absolute;width:82%;height:82%;top:-3%;left:-19%;
+  border-radius:50%;background:#070b13;
+}
+
+.bat{position:absolute;width:28px;height:12px;opacity:.46;animation:batFloat 5.8s ease-in-out infinite}
+.bat:before,.bat:after{
+  content:"";position:absolute;top:4px;width:15px;height:8px;background:#111827;
+}
+.bat:before{right:50%;border-radius:12px 1px 12px 2px;transform:rotate(16deg)}
+.bat:after{left:50%;border-radius:1px 12px 2px 12px;transform:rotate(-16deg)}
+.b1{top:16%;left:13%;transform:scale(.85)}
+.b2{top:23%;right:25%;transform:scale(.62);animation-delay:-1.8s}
+.b3{top:31%;left:25%;transform:scale(.55);animation-delay:-3.2s}
+
+.scene{position:absolute;left:0;right:0;bottom:0;height:40%;pointer-events:none}
+.hill{
+  position:absolute;bottom:-18%;width:130%;height:78%;border-radius:50% 50% 0 0;
+  background:linear-gradient(180deg,#152337 0%,#07101c 62%,#040810 100%);
+}
+.h1{left:-35%;transform:rotate(2deg)}
+.h2{right:-42%;bottom:-25%;opacity:.82;transform:scale(.83) rotate(-2deg)}
+.fog{
+  position:absolute;left:-15%;right:-15%;bottom:13%;height:28%;
+  background:radial-gradient(ellipse at center,rgba(203,217,228,.10),transparent 70%);
+  filter:blur(16px);
+}
+.house{
+  position:absolute;left:8%;bottom:22%;width:66px;height:52px;
+  background:#050912;border-radius:4px 4px 2px 2px;
+  box-shadow:0 10px 28px rgba(0,0,0,.28);
+}
+.house:before{
+  content:"";position:absolute;left:-8px;top:-23px;
+  border-left:41px solid transparent;border-right:41px solid transparent;border-bottom:30px solid #050912;
+}
+.house:after{
+  content:"";position:absolute;left:13px;top:17px;width:12px;height:12px;
+  background:#ff9b32;box-shadow:27px 0 0 #ff9b32;opacity:.78;
+}
+.pumpkin{
+  position:absolute;right:9%;bottom:17%;width:62px;height:48px;border-radius:48% 48% 44% 44%;
+  background:linear-gradient(90deg,#c75a13 0%,#ff8a1f 24%,#f06f12 50%,#ff8a1f 75%,#c75a13 100%);
+  box-shadow:0 0 22px rgba(255,109,20,.18);
+}
+.pumpkin:before{
+  content:"";position:absolute;left:27px;top:-11px;width:8px;height:14px;border-radius:5px;background:#46652f;transform:rotate(10deg)
+}
+.pumpkin:after{
+  content:"";position:absolute;left:13px;top:17px;width:9px;height:7px;
+  background:#1a1110;clip-path:polygon(50% 0,100% 100%,0 100%);
+  box-shadow:28px 0 0 #1a1110;
+}
 
 .card{
-  position:relative;z-index:5;width:min(91vw,410px);
-  padding:25px 22px 22px;border-radius:24px;text-align:center;
-  border:1px solid rgba(84,216,255,.22);
-  background:linear-gradient(155deg,rgba(7,31,55,.84),rgba(4,18,34,.92));
-  box-shadow:0 28px 80px rgba(0,0,0,.46),0 0 42px rgba(0,194,255,.07);
-  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  position:relative;z-index:5;width:min(92vw,390px);margin-top:-3vh;
+  text-align:center;display:flex;flex-direction:column;align-items:center;
 }
 .badge{
-  display:inline-flex;align-items:center;gap:7px;
-  padding:7px 12px;border-radius:999px;
-  border:1px solid rgba(75,220,255,.24);
-  background:rgba(22,110,160,.13);
-  color:#a9eaff;font-size:11px;font-weight:850;letter-spacing:.45px;
+  padding:7px 13px;border-radius:999px;
+  border:1px solid rgba(255,138,31,.25);
+  background:rgba(255,255,255,.045);
+  color:#e8edf5;font-size:12px;backdrop-filter:blur(6px);
 }
-.badge i{width:7px;height:7px;border-radius:50%;background:#41e2ff;box-shadow:0 0 13px #41e2ff}
+.badge b{
+  display:inline-block;width:7px;height:7px;margin-right:7px;border-radius:50%;
+  background:var(--orange);box-shadow:0 0 10px rgba(255,138,31,.75)
+}
 
-.logo-wrap{
-  position:relative;width:clamp(142px,41vw,190px);height:clamp(142px,41vw,190px);
-  margin:18px auto 10px;display:grid;place-items:center;
-}
-.logo-ring{
-  position:absolute;inset:4%;border-radius:50%;
-  border:1px solid rgba(61,219,255,.2);
-  box-shadow:0 0 30px rgba(23,185,255,.08);
-  animation:spin 9s linear infinite;
-}
-.logo-ring:before,.logo-ring:after{
-  content:"";position:absolute;width:8px;height:8px;border-radius:50%;
-  background:#59e6ff;box-shadow:0 0 14px #59e6ff;
-}
-.logo-ring:before{left:8%;top:18%}
-.logo-ring:after{right:3%;bottom:26%}
 .logo{
-  position:relative;width:100%;height:100%;object-fit:contain;
-  display:block;filter:drop-shadow(0 14px 28px rgba(0,169,255,.30));
-  animation:float 3.2s ease-in-out infinite;
+  width:clamp(112px,33vw,148px);height:clamp(112px,33vw,148px);
+  margin:22px 0 15px;display:block;object-fit:contain;
+  filter:drop-shadow(0 10px 24px rgba(0,174,255,.24));
+  animation:logoFloat 3s ease-in-out infinite;
 }
-
-h1{
-  margin:5px 0 0;color:#f2fbff;
-  font-size:clamp(21px,6.5vw,28px);line-height:1.14;font-weight:950;
-  letter-spacing:.2px;
+.title{
+  margin:0;color:var(--cream);font-size:clamp(22px,7vw,30px);
+  line-height:1.12;font-weight:900;letter-spacing:.4px;text-transform:uppercase;
+  text-shadow:0 0 18px rgba(255,138,31,.12);
 }
-.admin-mark{
-  margin-top:8px;color:#5ee5ff;font-size:12px;font-weight:850;
-  letter-spacing:1.8px;text-transform:uppercase;
-}
-.sub{margin-top:9px;color:var(--muted);font-size:13px;line-height:1.5}
-
+.sub{margin-top:9px;color:var(--orange2);font-size:14px;font-weight:700}
 .progress{
-  width:min(78vw,270px);height:7px;margin:19px auto 0;
-  border-radius:99px;overflow:hidden;background:rgba(255,255,255,.075);
+  width:min(82vw,260px);height:7px;margin-top:18px;border-radius:99px;
+  overflow:hidden;background:rgba(255,255,255,.08)
 }
 .bar{
   height:100%;width:12%;border-radius:inherit;
-  background:linear-gradient(90deg,#00b9ef,#2d89ff,#785dff);
-  box-shadow:0 0 16px rgba(54,202,255,.42);
-  transition:width .24s ease;
+  background:linear-gradient(90deg,#d85c12,#ff8a1f,#ffc067);
+  box-shadow:0 0 14px rgba(255,138,31,.34);
+  transition:width .25s ease
 }
-.caption{margin-top:9px;color:#7ea8c4;font-size:11.5px}
+.caption{margin-top:9px;color:var(--muted);font-size:12px}
+.dots{display:flex;gap:7px;margin-top:14px}
+.dots i{width:7px;height:7px;border-radius:50%;background:var(--orange);animation:blink 1.2s ease-in-out infinite}
+.dots i:nth-child(2){animation-delay:.15s}.dots i:nth-child(3){animation-delay:.3s}
 
-.status-row{display:flex;justify-content:center;gap:7px;margin-top:14px}
-.status-row i{
-  width:6px;height:6px;border-radius:50%;background:#48dcff;
-  animation:pulse 1.25s ease-in-out infinite
-}
-.status-row i:nth-child(2){animation-delay:.15s}
-.status-row i:nth-child(3){animation-delay:.3s}
+@keyframes logoFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes blink{0%,80%,100%{opacity:.32;transform:scale(.82)}40%{opacity:1;transform:scale(1.15)}}
+@keyframes batFloat{0%,100%{margin-top:0;margin-left:0}50%{margin-top:-7px;margin-left:12px}}
 
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
-@keyframes spin{to{transform:rotate(360deg)}}
-@keyframes pulse{0%,80%,100%{opacity:.28;transform:scale(.8)}40%{opacity:1;transform:scale(1.18)}}
+body.net-lite .bat{display:none}
+body.net-lite .logo{animation:none}
+body.net-lite .fog{filter:none}
 
-body.net-lite .grid-bg{display:none}
-body.net-lite .logo,body.net-lite .logo-ring{animation:none}
 @media(max-height:650px){
-  .card{padding:16px 18px}
-  .logo-wrap{width:112px;height:112px;margin:10px auto 6px}
-  .progress{margin-top:12px}
+  .moon{top:4vh}.card{margin-top:-1vh}.logo{margin:12px 0 10px;width:100px;height:100px}.progress{margin-top:12px}
 }
 @media(prefers-reduced-motion:reduce){
   *,*:before,*:after{animation:none!important;transition:none!important}
 }
 </style>
 </head>
+
 <body>
 
 <iframe
-  id="adminFrame"
+  id="appFrame"
   src="https://script.google.com/macros/s/AKfycbxQdyFPkxNCmIfu5y1tEajdBF6y58I1qlUgBxaMTklnNYIwXfnTZbeOfmayTLiaXOKCcA/exec?admin=1"
   allow="clipboard-read; clipboard-write"
   loading="eager"
-  title="QUẢN TRỊ TRA CỨU THÔNG TIN"
+  title="TRA CỨU THÔNG TIN"
 ></iframe>
 
-<section id="loading" aria-label="Đang tải trang quản trị">
-  <div class="grid-bg"></div>
-  <div class="glow-orb o1"></div>
-  <div class="glow-orb o2"></div>
+<section id="loading" aria-label="Đang tải">
+  <div class="noise"></div>
+  <div class="moon"></div>
+  <span class="bat b1"></span>
+  <span class="bat b2"></span>
+  <span class="bat b3"></span>
+
+  <div class="scene">
+    <div class="hill h1"></div>
+    <div class="hill h2"></div>
+    <div class="fog"></div>
+    <div class="house"></div>
+    <div class="pumpkin"></div>
+  </div>
 
   <div class="card">
-    <div class="badge"><i></i>ADMIN • Đang khởi động</div>
+    <div class="badge"><b></b>Đang khởi động</div>
 
-    <div class="logo-wrap">
-      <div class="logo-ring"></div>
-      <img class="logo" src="admin-logo-loading.png" alt="Logo quản trị" decoding="async" fetchpriority="high">
+    <img class="logo" src="logo-loading.png" alt="Logo TRA CỨU THÔNG TIN" decoding="async" fetchpriority="high">
+
+    <h1 class="title">TRA CỨU THÔNG TIN</h1>
+    <div class="sub"></div>
+
+    <div class="progress">
+      <div class="bar" id="progressBar"></div>
     </div>
+    <div class="caption" id="loadingCaption">Vui lòng chờ trong giây lát</div>
 
-    <h1>QUẢN TRỊ TRA CỨU THÔNG TIN</h1>
-    <div class="admin-mark">Dashboard quản trị</div>
-    <div class="sub">Đang mở bảng điều khiển và kết nối dữ liệu quản trị</div>
-
-    <div class="progress"><div class="bar" id="progressBar"></div></div>
-    <div class="caption" id="loadingCaption">Đang xác lập phiên quản trị...</div>
-    <div class="status-row"><i></i><i></i><i></i></div>
+    <div class="dots"><i></i><i></i><i></i></div>
   </div>
 </section>
 
 <script>
 (() => {
   const t0 = performance.now();
-  const frame = document.getElementById("adminFrame");
+  const frame = document.getElementById("appFrame");
   const loading = document.getElementById("loading");
   const bar = document.getElementById("progressBar");
   const caption = document.getElementById("loadingCaption");
@@ -202,10 +237,11 @@ body.net-lite .logo,body.net-lite .logo-ring{animation:none}
 
   let progress = 12;
   let done = false;
+
   const texts = [
-    "Đang xác lập phiên quản trị...",
-    "Đang kết nối dữ liệu hệ thống...",
-    "Đang chuẩn bị Dashboard...",
+    "Vui lòng chờ trong giây lát",
+    "Đang kết nối dữ liệu...",
+    "Đang chuẩn bị...",
     "Sắp hoàn tất..."
   ];
 
@@ -221,7 +257,8 @@ body.net-lite .logo,body.net-lite .logo-ring{animation:none}
     else if (progress < 60) progress += 3;
     else if (progress < 82) progress += 2;
     else if (progress < 92) progress += .7;
-    progress = Math.min(progress,92);
+
+    progress = Math.min(progress, 92);
     bar.style.width = progress + "%";
     caption.textContent = textFor(progress);
   }, 360);
@@ -230,22 +267,73 @@ body.net-lite .logo,body.net-lite .logo-ring{animation:none}
     if (done) return;
     done = true;
     clearInterval(timer);
+
     bar.style.width = "100%";
     caption.textContent = "Hoàn tất";
     document.body.classList.add("app-ready");
+
     setTimeout(() => loading.classList.add("hide"), 190);
+
+    if (window.__TRA_CUU_WRAPPER_PERF__) {
+      window.__TRA_CUU_WRAPPER_PERF__.readyMs = Math.round(performance.now() - t0);
+      renderPerf();
+    }
   }
 
-  frame.addEventListener("load", () => setTimeout(finish,80), {once:true});
-  setTimeout(() => { if (!done) finish(); }, 8000);
+  frame.addEventListener("load", () => {
+    if (window.__TRA_CUU_WRAPPER_PERF__) {
+      window.__TRA_CUU_WRAPPER_PERF__.iframeLoadMs = Math.round(performance.now() - t0);
+    }
+    setTimeout(finish, 80);
+  }, { once:true });
 
-  window.__ADMIN_WRAPPER_PERF__ = {
-    startedAt:t0,
-    network:conn ? (conn.effectiveType || "unknown") : "unknown",
-    saveData:!!(conn && conn.saveData)
-  };
+  setTimeout(() => {
+    if (!done) finish();
+  }, 8000);
+
+  const perfEnabled = new URLSearchParams(location.search).get("perf") === "1";
+  if (perfEnabled) {
+    window.__TRA_CUU_WRAPPER_PERF__ = {
+      network: conn ? (conn.effectiveType || "unknown") : "unknown",
+      saveData: !!(conn && conn.saveData),
+      downlink: conn && Number.isFinite(conn.downlink) ? conn.downlink : null,
+      rtt: conn && Number.isFinite(conn.rtt) ? conn.rtt : null,
+      shellDomMs: null,
+      iframeLoadMs: null,
+      readyMs: null
+    };
+
+    const panel = document.createElement("div");
+    panel.id = "wrapperPerf";
+    panel.style.cssText =
+      "position:fixed;z-index:99999;right:8px;bottom:8px;max-width:270px;" +
+      "padding:8px 10px;border-radius:10px;background:rgba(0,0,0,.78);" +
+      "color:#fff;font:11px/1.45 Arial,sans-serif;white-space:pre-line;" +
+      "pointer-events:none";
+    document.body.appendChild(panel);
+
+    window.renderPerf = function(){
+      const p = window.__TRA_CUU_WRAPPER_PERF__;
+      panel.textContent =
+        "TRA CỨU THÔNG TIN • WRAPPER PERF\n" +
+        "Network: " + p.network + (p.saveData ? " • SaveData" : "") + "\n" +
+        "Downlink: " + (p.downlink ?? "-") + " Mbps • RTT: " + (p.rtt ?? "-") + " ms\n" +
+        "DOM shell: " + (p.shellDomMs ?? "-") + " ms\n" +
+        "Iframe load: " + (p.iframeLoadMs ?? "-") + " ms\n" +
+        "Wrapper ready: " + (p.readyMs ?? "-") + " ms";
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+      window.__TRA_CUU_WRAPPER_PERF__.shellDomMs = Math.round(performance.now() - t0);
+      renderPerf();
+    }, { once:true });
+
+    renderPerf();
+  } else {
+    window.renderPerf = function(){};
+  }
 })();
 </script>
+
 </body>
 </html>
-
